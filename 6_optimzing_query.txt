@@ -1,0 +1,31 @@
+
+Query optimization is reducing the amount of work the database must perform to answer a query.
+
+Suppose you have:
+
+SELECT *
+FROM users
+WHERE email = 'dev@example.com';
+
+What work does the database perform?
+
+Very roughly:
+
+Find candidate rows
+    ↓
+Read rows
+    ↓
+Filter rows
+    ↓
+Return results
+
+Optimization means reducing one or more of those steps.
+
+Optimization Hierarchy
+
+When I investigate a slow query, I usually think:
+
+1. What work is being done?
+2. Why is it being done?
+3. Can we avoid it?
+4. If not, can we do it cheaper?

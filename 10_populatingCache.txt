@@ -1,0 +1,40 @@
+Populating the cache
+
+cache between the api server and the database There are 2 ways of populate the cache
+
+1.Lazy population 
+  Read first fo to the cache 
+  if: 
+    data exit , return 
+  else:
+    got to Db do heavy operation return data (lazy population)
+
+Example: caching blogs
+
+Fetching a blog from DB is expensive Hence , when someone accesses it we fetch from DB and cache it on redis . Subsequent request are served from cache
+
+2.Eager population
+
+  2 Ways:
+
+   1.Write go to both db and cache in the same request call 
+
+   Example: live cricket score 
+    Thousand of people serving it from cache so why not update cache & Db at once adn save the cache miss  
+
+   
+   2.Processing push data to cache because you anticipate the need
+
+   Example: when a celebrity tweet / post something
+
+   when account with 100k follower post something , proactively push it to the cache , we will anyway need it and we save a cache miss
+
+
+
+Scale cache
+
+cache is just like db , hence scaling technique for a cache like redis is similar to regular Db
+
+1. Vertical scaling
+2. Horizontal scaling
+ 

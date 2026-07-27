@@ -1,0 +1,90 @@
+https://chatgpt.com/share/6a22a70d-a654-8324-9200-48bcedb0dae9
+
+
+Database are most critical Component of any system
+
+ACID Properties in RDBMS
+
+transaction -> atomic unit of work
+
+1. Atomicity -> All Statement Within a transaction either take effect or none of them
+
+2. Consistency -> Data wil never go incorrect no matter what through       
+  
+  1. constraints -> Checks 
+  
+  2. cascade -> deleting a row should delete everything associated to it 
+  
+  3. triggers -> triggers certain fn or work after the main work
+   
+    1.Trigger Lifecycle , A trigger is defined on:
+    
+    Table + Event + Timing + Action
+
+    other supported events are (TRUNCATE ,DDL Events ,LOGIN Events)
+    
+    Example : accounts table + (INSERT/UPDATE/DELETE) on table + before (INSERT/UPDATE/DELETE) + validate balance 
+
+4. Isolation -> When multiple transaction are executing parallel the isolation level determines how much changes of one transaction are visible to others 
+
+****************4 LEVEL OF ISOLATION Learn it****************
+
+ ( Dirty Read = Reading data that hasn't been committed yet.
+
+  Non-Repeatable Read = Reading the same row twice and getting different values.
+
+  Phantom Read = Running the same query twice and getting different sets of rows.)
+
+  1.Read unCommitted
+
+  2.Read Committed
+
+  3.Repeatable Read
+
+  4.Serializable  
+
+**** Important: ***
+
+In PostgreSQL:
+READ UNCOMMITTED
+does not actually exist internally.
+PostgreSQL automatically upgrades it to:  Read Committed
+because PostgreSQL's MVCC architecture does not allow dirty reads.
+
+4. Durability -> when transaction commits , the changes outlive outage
+
+
+For a query they may consider:
+
+Sequential Scan
+Index Scan
+Bitmap Index Scan
+Nested Loop Join
+Hash Join
+Merge Join
+...
+
+Then choose what they estimate is cheapest.
+
+The chosen strategy is called the:
+
+Query Plan
+
+EXPLAIN ANALYZE
+SELECT * from users ;
+
+ANALYZE users;  //to estimate again
+
+
+MongoDb
+To see the query plan:
+
+db.users.find({
+  email: "dev@example.com"
+}).explain()
+
+More commonly:
+
+db.users.find({
+  email: "dev@example.com"
+}).explain("executionStats")

@@ -1,0 +1,22 @@
+Design facebook example
+  Features/Component :- Auth , Notification , Feed
+
+Dissecting Each Features/Component Example Feed
+  User <-> Webserver <-> DataBase <-> Generator <-> Aggregator (optional)
+
+For each subComponent look into (Repeat for Each Component)
+  1. Database And Caching
+  2. Scaling And Fault tolerance
+  3. Async Processing (Delegation)
+  4. Communication (Tcp , WebSocket , Grpc , http ,rest)
+
+Add more subComponent if needed 
+
+Example Generator
+
+User <-> WebServer <-> feed Database <-> merger 
+<-  1. Post service 
+<-  2. Recommended services 
+<-  3. Follow Service 
+
+

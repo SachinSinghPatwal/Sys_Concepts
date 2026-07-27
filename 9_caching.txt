@@ -1,0 +1,19 @@
+Caching
+Cache are anything that helps you avoid an expensive network I/O , disk and computation 
+
+  1.Api Call to get profile information
+  2.Reading a specific line from a file
+  3.Doing multiple table joins
+
+  Caches are faster and expensive like (Redis)
+  Caches stores any storage that is nearer and helps you avoid something expensive is a cache for you
+
+  Caches are just glorified has table
+
+Some example
+
+1.google News : Most recent news articles are more likely to be access, hence served from cache
+
+2. Auth tokens : Auth are cached in cache to avoid load on database
+
+3. live stream : last 10 min of live stream is cached as it will be accessed the most 

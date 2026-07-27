@@ -1,0 +1,15 @@
+{
+  "name": "local_redis_foundation",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "ioredis": "^5.4.1"
+  }
+}

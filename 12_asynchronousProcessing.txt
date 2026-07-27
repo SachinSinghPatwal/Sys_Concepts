@@ -1,0 +1,16 @@
+Message Queues
+
+Broker help 2 services / application commination through messages .
+
+1.long running task 
+2. trigger dependent task across machines
+
+eg : video processing
+
+features
+1.broker helps us connect different sub system
+2.broker act as a buffer for the message
+  i.e consumers can consume at their own pace
+  eg:notification system
+3.Broker can retain messages for "n" (depends on broker your use) days
+4.Broker can req-queue the message if not deleted (depends on broker your use)

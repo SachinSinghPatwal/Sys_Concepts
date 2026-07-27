@@ -1,0 +1,71 @@
+1. listen_addresses
+
+Current default is usually:
+
+listen_addresses = 'localhost'
+
+Meaning:
+
+Only this machine can connect.
+
+If the replica runs on another machine, it cannot connect.
+
+If we later use another machine, we'll typically change it to:
+
+listen_addresses = '*'
+
+or specify an IP.
+
+Since our replica will be on the same Windows machine, localhost is sufficient. We don't need to broaden access unless we specifically want to.
+
+2. wal_level
+
+This is the most important replication setting.
+
+The replica doesn't receive SQL like:
+
+INSERT INTO users VALUES (...);
+
+Instead, it receives low-level WAL records describing the changes.
+
+3. max_wal_senders
+
+Think of each replica as opening a streaming connection to the primary.
+
+Primary
+ │
+ ├── Replica 1
+ ├── Replica 2
+ ├── Replica 3
+
+Each active replication connection uses one WAL sender process.
+
+If:
+
+max_wal_senders = 0
+
+then no replica can connect.
+
+4. max_replication_slots
+
+A replication slot tells PostgreSQL:
+
+"Don't delete WAL files until this replica has consumed them."
+
+Without slots, if a replica falls behind, the required WAL segments might be removed before it catches up.
+
+We'll discuss slots in depth later because they have storage implications.
+
+5. hot_standby
+
+This setting primarily affects the replica, not the primary.
+
+It allows read-only queries while the replica continues applying WAL.
+
+Example:
+
+SELECT * FROM users;
+
+works on the replica if hot_standby = on.
+
+Since your initial goal is redundancy and recovery, we won't actually use the replica for reads yet, but it's still standard to leave it enabled.

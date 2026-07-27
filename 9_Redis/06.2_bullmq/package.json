@@ -1,0 +1,17 @@
+{
+  "name": "local_redis_foundation",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/api.js",
+    "worker": "node --watch src/worker.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "bullmq": "^1.79.0",
+    "ioredis": "^5.4.1"
+  }
+}

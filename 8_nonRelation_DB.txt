@@ -1,0 +1,28 @@
+Non Relation Database 
+
+Most of them shard out of the Box
+
+Document Database : MongoDb , Elastic Search
+
+  1.Mostly Json base
+  2.Support complex queries
+  3.partial update to document possible
+  4.closest to RD
+  5.In-app notification service, catalog service
+
+Key Value Store (Redis , DynamoDb , Aerospike)
+  
+  1.extremely simple Database
+  2.Limited Functionalities (Get,Put,Del)
+  3.Meant for key-based access pattern
+  4.Does not support complex query(aggregations)
+  5.Can be heavily sharded and partitioned
+  6.use Case : profile Data , Order Data , Auth Data, message(most use cases)
+  *you can use RD and Document Db as KY stores
+
+Graph Database (Neo4j , neptune , DGraph)
+
+  1.What if our graph data structure had a Database
+  2.it store data that are represented as nodes,edges and relations
+  3.Great for running complex graph algo
+  4.powerful to model Social Network , Recommendations & Fraud Detection

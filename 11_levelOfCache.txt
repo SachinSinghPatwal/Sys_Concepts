@@ -1,0 +1,58 @@
+Caching at different levels 
+
+Most common cache we saw was Redis
+  but that is not the only type of cache out there or not the only place that can be usd as a cache 
+
+  Literally every piece / component in your infra cache something for you
+  But should you ?
+
+  depends on the guarantees
+  also too much caching is bad ->  stale data and invalidation
+
+  lets take a look at different places where we can cache
+
+  1. Client Side Caching
+
+    Storing frequently accessed data on client side 
+    eg: Browser , Mobile device , etc
+
+  - Cache near constant  data
+      (eg: images , js files , user information, etc)
+  - it should be okay serving high cached info (stale)
+  - invalidation by time (expiry)
+
+  Massive performance boost , as we need not make any request to backend
+
+
+  2. Content Delivery Network (CND)
+  geographically distributed cached which is lazily populated
+  CDN's are set of servers distributed across the world .
+  Request from a user , goes to the nearest CND server and hence user gets very quick response 
+
+  US folks getting from US servers is faster then fetching it from INDIA
+
+  CDN does Lazy cache population
+
+  *************** explore CDN in AWS and Akamai ***********************
+
+  3. Remote cache (Redis):Expensive and store data in main memory
+  Remote cache is centralized cache that we most commonly use Redis . Multiple Api servers use it to store frequently accessed data
+
+  *every key stored should have a expiration
+  *size of cache is relatively very small on compared to a DB
+
+
+  4. Database Caching 
+  Instead of computing total posts by users every time we store 'total_posts' as column and update it once a while .  save expensive DB computation
+
+  Select count(*) from posts
+    where user_id = >  123 expensive query
+
+    every time a post is publish , we also update hte user table and do total_post = total_post + new_count
+
+
+
+Note there are other places lie load balancer where we can cache
+NOte we can cache some data every single component in the system but should use do it ? 
+
+  NOt necessarily ( it is very user_case specific and subject to tolerance level of staleness of the served data )

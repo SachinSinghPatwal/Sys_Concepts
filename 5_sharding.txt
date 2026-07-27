@@ -1,0 +1,19 @@
+Sharding and Partitioning
+
+Sharding : method of distributing data across multiple machines (About Database)
+
+Partitioning : splitting a subset of data within the same instance (About Data)
+
+Each DB server is thus a shard and we say that the data is partitioned
+
+Overall a database is sharded while the data is partitioned
+
+there are two categories of Partitioning
+
+1.horizontal Partitioning
+2.Vertical Partitioning
+
+
+also we have some beginner concept of sharding 
+1. shard key : it should be only attained by high cardinality(Many unique values) properties for even distribution of data within shared
+2. when small input changes -> very different outputs , This is sometimes called the avalanche effect in good hash functions. (in case of hash does not guarantee complete randomness )

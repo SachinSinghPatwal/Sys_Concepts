@@ -1,0 +1,11 @@
+Why non-relations Db scale
+1.There are no relations and constraints
+2.Data is modelled to be sharded (split cross multiple nodes)
+
+How to choose ? ask these
+
+  1.understand what data your are storing
+  2.understand how much of data your be storing
+  3.understand how you will be accessing the data
+  4.what kind of queries you wil be firing
+  5.any special feature you expect

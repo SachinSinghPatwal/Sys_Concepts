@@ -1,0 +1,25 @@
+How do you know that you have built a good system ?
+
+(Every System is "Infinitely" buildable) 
+
+1. You Broke your System into Components
+
+2. Every Component has a Clear Set of Responsibility (Exclusive)
+
+3. For each Component , you've slight technical Details figured out
+  
+  1. Database And Caching
+  
+  2. Scaling And Fault tolerance
+  
+  3. Async Processing (Delegation)
+  
+  4. Communication (Tcp , WebSocket , Grpc , http ,rest)
+
+4. Each Component (in isolation) in
+  
+  1. Scalable -> Horizontal 
+  
+  2. fault tolerant -> Plan for recovery (to a stable state) in case of failure .
+  
+  3. available -> Component functions even when some component "fails"

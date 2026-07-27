@@ -1,0 +1,30 @@
+One of the most important component in Distributed System that means it easy to scale the load horizontally
+
+** load Balancer is the only point of contact
+
+Every Load Balancer has either
+
+1. Static IP
+2. Static DNS Name
+
+Request Flow
+
+1. client already has IP/Domain of load balancer
+2. client makes API call to it
+3. load balancer picks one server and makes the same req to that server
+4. load balancer get the response from the server
+5. load balancer response back the client
+
+It balances load , which is configurable allowing it to pick the server to forward request
+
+Load Balancing Algo
+
+1. Round Robin
+2. Weighted Round Robin = hardware based / non uniform.
+3. Least Connection
+4. Hash based Routing
+
+Advantages
+
+1. Scalability
+2. Availability

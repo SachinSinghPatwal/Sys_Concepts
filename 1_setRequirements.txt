@@ -1,0 +1,9 @@
+
+Set Requirement 
+
+System Design is 
+1. Decide Architecture  ~ Db , Server , CDN
+2. Decide Component  ~ Features Auth , Chat , Video 
+3. Decide Modules ~ Services
+
+along with their interaction with each other 

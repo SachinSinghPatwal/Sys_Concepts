@@ -1,0 +1,13 @@
+Circuit Breakers prevent CASCADING FAILURE
+
+EG : Social Network
+1. user comes to feed
+
+2. feed service pull some info from recommendation some from trending
+
+
+3. recommendation and trending both relies on profile service -> people detail of user who made the post
+
+4.recommendation and trending both relies on  post service
+
+how to implement

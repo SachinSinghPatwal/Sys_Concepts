@@ -1,0 +1,165 @@
+Benefits
+  1.Decoupling
+  2.Scalability
+  3.Reliability
+  4.Asynchronous
+  5.Load balancing
+  6.Retry and dead-lettering support
+
+Core Components
+  1.Producer
+
+    Sends publish messages to an Exchange
+    ** It never send messages directly to a queue
+    because the exchange decides where the message should go
+
+  Technical behavior
+    Opens a connection and a channel with RabbitMQ
+    Publish a message with
+    Exchange name
+    Routing Key
+    Message Body (payload)
+    Properties (headers, persistence flag , priority)
+
+
+  NOTE: every message sent by a producer reaches the exchange in binary form
+  The Client lib transmits messages as Binary (AMQP) is a binary protocol
+
+  But its the developer responsibility to serialize structure data into bytes before sending 
+
+2.Exchange - the message router 
+
+  The exchange is the brain of the rabbitMQ's routing system , it decides how messages flow from producers to one or more queues
+
+  When a message arrives , the exchange looks at its type and binding to  decide which queue should receive the message
+
+  Main Exchange Type
+
+    type     RoutingLogic                       UseCase
+
+    Direct   Exact routing key match            Logs , targeted routing
+    Fanout   Broadcast to all queues bound      Notification , broadcasts
+    Topic    pattern-based routing              Multi-service routing(*.created,india*)
+    Headers  Route based on Headers             Advance Filtering
+
+
+
+3.Queue - the message buffer
+
+  A Queue is a Storage unit that holds messages until they're consumed.
+  Think of it as a FIFO message buffer
+
+    Messages stay in the queue until
+      .A consumer retrieves and acknowledges them
+      .The message expire(TTL)
+      .the queue is deleted
+
+
+    key Properties
+      prop               description
+      Durable            Survives broker restarts
+      Exclusive          Used only by one connection
+      Auto deleted       Deleted when consumers remain
+      TTL                Messages expiry time
+      DLX                For failed messages
+      Lazy mode          Stores on disk to save RAM
+
+  Queue Types
+
+    1.Standard => Common , FIFO or if used priority, multiple consumer , messages on disk and ram
+
+    2. Priority => Priority Based , payment alert 
+
+    3. Dead letter => failed messages , connected via DLX , error handling
+
+    4. Lazy => disk , slower , background workload
+
+    5. TTL  = expire after certain time , notification 
+
+    6. Single active Consumer  = only one consumer is active at a time , if its disconnected another connects , sequential processing
+
+    7. Stream Queue => queue + kafka , Message are retained for a configurable time  can replay messages by offset by consumer
+
+
+
+4.Binding - connection between exchange and queue
+
+  A Binding is the rule that connects on exchange to queue , It defines which messages go into which queue , based on routing keys or headers
+
+  without bindings exchange con't route anything - they-d just drop messages
+
+  you can have:
+    one exchange bound to many queue
+    one queue bound to many exchanges
+    Multiple bindings for flexible routing
+
+5.Consumer 
+  A consumer is a Application that reads messages from a queue and process them
+
+  It connects to RabbitMQ , Subscribe to a queue and waits for new messages to arrive
+
+  Consumer can 
+    Auto-acknowledges messages (less reliable)
+    Manually acknowledge after processing (recommended)
+    NACK  (negative acknowledge) messages to requeue or send to DLQ
+
+
+***Hidden under the hood Components***
+rabbitMQ has some hidden but critical internal components that make these 
+
+5 core parts work efficiently
+
+1.channel
+  Lightweight virtual connection inside TCP connection
+  You can have multiple channel per connection
+  Used for publishing , consuming and managing queues
+
+  why ? opening / closing TCP connection is expensive
+  channels are cheap
+
+
+2.Connection
+  A real TCP connection between your app and RabbitMQ broker .
+  Establish using AMQP protocol(amqp://localhost:5672)
+  allow multiple concurrent connections from different apps or service
+
+3.virtual Host
+  Logical namespace for isolation
+  Each vHost has its own exchanges , queue, and permissions.
+  Default vHost:/
+  Useful for multi tenant system
+  or environment separation
+
+  
+producer -> [connection + channel] -> exchange ->(binding)->queue -> consumer
+
+4.AMQP - Advance Message Queuing Protocol
+  define how message producer , broker and consumer communicate
+
+  layer
+    Connection layer         How Client connect/ authenticate (TCP)
+    Session layer            How virtual channel are managed
+    Messaging layer          How messages are routed , ack ,etc
+
+So AMQP defines how:
+
+  Messages are published 
+  Broker store and forward messages
+  Consumer ACK/NACK messages
+  Reliability , persistence and Confirmation work
+
+  Why Exist?
+    Before AMQP every protocol has its own protocol
+
+    Interoperability  = any client can talk to any broker
+    Reliability = support for ACK , delivery guarantee , transactions
+    Security = auth , permission , virtual hosts
+
+Single Point of failure
+
+  a single Rabbit MQ is 
+  But avoid it by clustering , mirrored queue , quorum queue or federation/shovel setup
+
+  perf / scale
+  50/100k ms/sec/node
+  sharding , more consumer ,add node

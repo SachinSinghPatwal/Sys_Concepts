@@ -1,0 +1,30 @@
+Api server are stateless but db are stateful
+
+worst :Disk Crashes leading loss of data
+
+A good system always takes care of this catastrophic situation 
+
+The only way to protect ourselves against loss of data is to multiple copies of data -> data redundancy 
+
+redundant data can be implemented at row and columns level, table level and Db level
+
+Can be stored in the different DB or different table and region
+
+Backup and Restore
+- Daily Backup of data
+- weekly complete backup
+- storing one copy of data in different region (disaster recovery)
+- when something goes wrong, we can restore the data from backup
+- almost always the easiest thing to do
+
+Continues Redundancy
+  Setup Replica of the database and writes go to both DB (sync or async) and reads can be from any of the DBs
+
+  1. API server writes to both DBs (sync or async)
+  2. API writes to one DB and a replication process copies the data to the other DB (async)
+
+  if the main database goes down, the other database can take over and continue to serve the requests
+
+  critical data synchronously to replica DBs and non-critical data asynchronously to the replica DB
+
+  Replica did not server the requests, it is only for backup and recovery

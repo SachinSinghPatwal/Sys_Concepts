@@ -1,0 +1,13 @@
+Redis is Memory DB through persist data
+
+Cache , session Store , Otp store , rate limiting , Job Queue
+
+Only use if their is 
+Reduce Read Pressure
+Store Temp Data which will expiry soon
+Shared Counter  aka rate limit shared by all 
+Background Jobs aka queues
+
+you can more metadata in redis eg in otp folder
+
+{otp:"12345",attempt:0,maxAttempts:3,createdAt:timeStamp,lastAttempted:timestamps,blockedUntil:timeStamp}

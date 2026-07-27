@@ -1,0 +1,53 @@
+********* Scaling Database *********
+
+Vertical Scaling :
+
+  adding more  CPu , Ram , Disk
+  requires downtime during reboot
+  gives your ability to handle "scale" , more load 
+  Vertical scaling has a physical hardware limitation
+
+
+Horizontal Scaling : Read Replicas
+
+  Api (this decide which to go) -> Master (only for write) < Async / Sync  > Replica (only for read)
+   
+  When read : write = 90:10
+  you move reads to other Database so that "master" if free to do writes
+  API servers should know which DB to connect to get things done
+
+  
+Replication
+  Changes on one DB (Master) needs to be sent to Replica to maintain Consistency 
+
+  Two Modes
+
+  1. Synchronous Replication
+
+    user <-Write-> Api <-Write-> Master <-Write-> Replica
+    
+    * write on both master and replica , hence slow thus latency and slower write but get strong Consistency , zero Replication Lag 
+
+  2. Asynchronous Replication
+
+    user <-Write-> Api <-Write-> Master <-Write Later-> Replica
+
+    * eventual Consistency , Some replica Lag , faster writes
+
+
+**************************** Self Learning ************************************
+
+
+Horizontal Scaling : Sharding
+
+  Because one node cannot handle the data / load we split it into multiple exclusive subsets write on a particular row / document will go to one particular shard
+
+  This way we scale our overall database load 
+
+  NOte: shards are independent no replication btw them
+  APi Server needs to know whom to connect to get things done
+
+
+  NOte: some DB has a proxy that takes care of routing
+
+Each shard can have its own replica (if needed)

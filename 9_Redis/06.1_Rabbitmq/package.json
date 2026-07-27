@@ -1,0 +1,17 @@
+{
+  "name": "Priority_Queue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "consumer_header.js",
+  "scripts": {
+    "producer": "node --watch Priority_Queue/Producer.js",
+    "worker": "node --watch Priority_Queue/Consumer.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "amqplib": "^2.0.1"
+  }
+}
