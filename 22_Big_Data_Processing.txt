@@ -1,0 +1,29 @@
+Counting word frequency 
+
+Approach 1: Simple
+
+1.load data on one machine
+2.read it character by character
+3.when space is encountered , update the count of the word in a hash table
+
+this is a simple approach but runs in O(n) time approx .
+But because only one machine is used , it can handle only limited data size and will fail for large data sets.
+so we can parallelize the process by using multiple machines to handle large data sets.
+
+using threads
+
+
+Approach : Threads
+
+you can easily use threads to parallelize the process of counting word frequency. Each thread can handle a portion of the data, read it character by character, and update the count of words in a shared hash table. However, care must be taken to manage concurrent access to the hash table to avoid race conditions
+
+Approach : distributed computing
+
+more scalable approach is to use distributed computing frameworks like Hadoop or Spark. These frameworks allow you to distribute the data across multiple machines and process it in parallel. Each machine can count the word frequency for its portion of the data, and then the results can be aggregated to get the final word counts.
+
+Challenges: 
+1. what about failure handling
+2. how to manage and coordinate multiple machines
+3. data consistency and synchronization
+
+Spark and Flink are popular frameworks that provide built-in mechanisms for handling failures, managing distributed resources, and ensuring data consistency. They also offer high-level APIs that simplify the process of writing distributed applications.
