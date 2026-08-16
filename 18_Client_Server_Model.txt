@@ -1,0 +1,26 @@
+user -> client (browser) < response - request > server
+
+ipv4 
+ipv6
+
+public network
+private network
+
+Network Address Translation (NAT)
+
+DNS (Domain Name System)
+
+TCP (Transmission Control Protocol)
+1. connection-oriented protocol
+2. reliable data transfer
+3. ordered data transfer
+4. error checking and correction
+5. flow control
+6. congestion control
+
+UDP (User Datagram Protocol)
+1. connectionless protocol
+2. No ordered data transfer
+3. purpose: low latency, low overhead
+4. Use cases: streaming, gaming, VoIP
+2. unreliable data transfer

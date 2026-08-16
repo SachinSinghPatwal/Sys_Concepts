@@ -1,0 +1,3 @@
+Monolithic 
+
+all code is bundled in a single repository. This approach can simplify dependency management and versioning, as all components are developed and released together. However, it can also lead to challenges in scaling development teams, as changes in one part of the codebase can affect other parts, making it harder to isolate issues and manage contributions from multiple developers.
