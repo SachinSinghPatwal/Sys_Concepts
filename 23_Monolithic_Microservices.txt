@@ -1,0 +1,7 @@
+Monolithic 
+
+all code is bundled in a single repository. This approach can simplify dependency management and versioning, as all components are developed and released together. However, it can also lead to challenges in scaling development teams, as changes in one part of the codebase can affect other parts, making it harder to isolate issues and manage contributions from multiple developers.
+
+Microservices
+
+In contrast, the microservices architecture decomposes an application into smaller, independently deployable services. Each service is responsible for a specific business function and communicates with others through well-defined APIs. This approach allows for greater flexibility in development, testing, and deployment, as each service can be developed and scaled independently. However, it introduces complexity in managing distributed systems, ensuring data consistency, and handling inter-service communication.
