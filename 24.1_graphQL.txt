@@ -1,0 +1,32 @@
+Unlike Rest , where server defines what you get , in graphQL the client decides what data it wants
+
+Think of REST as a fixed menu at a restaurant, where the server decides what dishes are available and how they are served. In contrast, GraphQL is like a customizable menu, where the client can specify exactly what ingredients they want in their dish, allowing for more flexibility and efficiency in data retrieval.
+
+
+unlike REST Multiple endpoints , graphQL exposes a single endpoint /graphql where the client specifies exactly what data it needs
+ 
+
+ issues with rest
+ over-fetching,
+ under-fetching,
+ versioning-mess,
+
+ graphQl 
+
+ Query -> read , get
+ mutation -> write / update / delete 
+ subscription -> real-time updates
+
+ benefits of GraphQL over REST,
+ CLient control data
+ one endpoint for all requests
+ strongly typed schema
+ versioning is not an issue
+ great for complex systems and microservices
+ introspection allows clients to query the schema for available types and fields
+
+challenges
+Complexity on server side 
+Caching harder
+performance risk
+learning curve for developers

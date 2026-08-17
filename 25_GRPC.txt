@@ -1,0 +1,27 @@
+RPC = remote procedure call
+RPC is a way for one program to call a fn /procedure on another computer as if it was calling it locally 
+it hides all the network details like sockets, serialization, and communication protocols, allowing developers to focus on the functionality of their applications rather than the complexities of network programming.
+
+grpc = google remote procedure call
+
+HTTP/2 based for transport (fast multiplexing, header compression, server push,bidirectional streaming)
+
+protocol Buffers protobuf for data serialization (compact binary format, efficient, language-agnostic)
+
+Cross-language support (C++, Java, Python, Go, Ruby, etc.)
+
+API defined in .proto files (service definitions, message types)
+
+Auto-generated client and server code (reduces boilerplate, ensures consistency)
+
+type of communication
+
+Unary
+
+server streaming
+
+Client streaming
+
+Bidirectional streaming
+
+Protobufs are used to define the structure of the data being sent and received in gRPC. They provide a language-agnostic way to serialize structured data, making it easy to define APIs and exchange data between different programming languages.

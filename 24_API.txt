@@ -1,0 +1,23 @@
+API - application programming interface
+
+REST = Representational State Transfer (architectural style for designing networked applications not protocol not a library)
+
+uses HTTP /HTTPS + URLS to talk between clients and servers
+
+principles
+client and server are independent
+stateless (no client context stored on server between requests)
+uniform interface (standardized way to communicate)
+
+
+usage
+1.client - server apps
+2.web applications
+3.public APIs (e.g. Twitter, Google Maps)
+4.CRUD operations (Create, Read, Update, Delete)
+5.Microservices architecture (services communicate via APIs)
+
+not usage
+1.Real time applications (e.g. video streaming, gaming)
+2.,under-fetching ,over-fetching data (e.g. requesting more data than needed)
+3. high-performance service to service communication (e.g. low latency requirements)
